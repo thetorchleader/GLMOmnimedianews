@@ -58,6 +58,14 @@ def esc(text):
     return html.escape(text or "", quote=True)
 
 
+def img_url(image, prefix=""):
+    """Return the image URL, prefixing only relative paths."""
+    image = image or ""
+    if image.startswith(("http://", "https://", "data:")):
+        return image
+    return prefix + image
+
+
 def slugify(text):
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
 
@@ -132,7 +140,7 @@ def footer(prefix):
     <div class="footer-grid">
       <div>
         <h4>{esc(SITE_NAME)}</h4>
-        <p>{esc(SITE_NAME)} is the news arm of GLM Omnimedia — serving the global Church with truthful, uncompromising journalism evaluated through a biblical conservative lens. We report the news the mainstream will not, and we measure every story against the unchanging Word of God.</p>
+        <p>{esc(SITE_NAME)} is the news arm of GLM Omnimedia — serving the global Church with truthful, uncompromising journalism evaluated through a biblical lens. We report the news the mainstream will not, and we measure every story against the unchanging Word of God.</p>
       </div>
       <div>
         <h4>Sections</h4>
@@ -169,12 +177,13 @@ def story_url(story, prefix=""):
 
 
 def card(story, prefix=""):
+    breaking = '<span class="badge breaking">Breaking</span>' if story.get("breaking") else ""
     return f"""<article class="card">
   <a class="thumb" href="{story_url(story, prefix)}" aria-label="{esc(story['title'])}">
-    <img src="{prefix}{esc(story['image'])}" alt="{esc(story['title'])}" loading="lazy">
+    <img src="{esc(img_url(story['image'], prefix))}" alt="{esc(story['title'])}" loading="lazy">
   </a>
   <div class="card-body">
-    {badge(story['category'])}
+    {breaking}{badge(story['category'])}
     <h3><a href="{story_url(story, prefix)}">{esc(story['title'])}</a></h3>
     <p class="summary">{esc(story['summary'])}</p>
     <div class="meta">
@@ -200,7 +209,7 @@ def sidebar(stories, prefix=""):
   </div>
   <div class="widget" id="about">
     <h3>About GLM Omnimedia</h3>
-    <p>{esc(SITE_NAME)} is the umbrella news and publishing ministry of GLM Omnimedia — biblical, conservative evangelical journalism for the Christian community worldwide. Every story is reported truthfully and weighed against Scripture.</p>
+    <p>{esc(SITE_NAME)} is the umbrella news and publishing ministry of GLM Omnimedia — biblical evangelical journalism for the Christian community worldwide. Every story is reported truthfully and weighed against Scripture.</p>
   </div>
   <div class="widget">
     <h3>Verse of the Day</h3>
@@ -212,6 +221,8 @@ def sidebar(stories, prefix=""):
 
 
 def build_index(stories):
+    # Breaking stories pin to the top, then newest first.
+    stories = sorted(stories, key=lambda s: (bool(s.get("breaking")), s["published_at"]), reverse=True)
     hero = stories[0]
     hero_html = f"""<section class="hero" aria-label="Featured story">
   <div class="hero-card">
@@ -268,7 +279,7 @@ def build_index(stories):
         )
 
     body = (
-        head(f"{SITE_NAME} — {TAGLINE}", f"{SITE_NAME}: {TAGLINE}. Biblical conservative evangelical news for the global Church.", "")
+        head(f"{SITE_NAME} — {TAGLINE}", f"{SITE_NAME}: {TAGLINE}. Biblical evangelical news for the global Church.", "")
         + utility_bar()
         + masthead("")
         + nav("", current="home")
@@ -322,7 +333,7 @@ def build_story_page(story, stories):
     </div>
   </header>
   <figure class="story-figure">
-    <img src="../{esc(story['image'])}" alt="{esc(story['title'])}">
+    <img src="{esc(img_url(story['image'], '../'))}" alt="{esc(story['title'])}">
     <figcaption>{esc(story['image_credit'])}</figcaption>
   </figure>
 {commentary_html}  <div class="story-body">

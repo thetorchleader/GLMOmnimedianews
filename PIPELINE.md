@@ -34,7 +34,7 @@ Keep a small rotation log (e.g. `pipeline-log.md`, git-committed) recording
    missions, theology, family/culture, world Christianity.
 3. **Read the full article** (browser fetch of the article URL).
 4. **Rewrite**: new headline + full article in the theologically biblical
-   conservative evangelical voice, with attribution ("according to…",
+   biblical evangelical voice, with attribution ("according to…",
    "reported by…") and the original source linked. **Never copy the full
    text** — rewrite in your own words; short quotes with credit are fine.
 5. **Image**: use a legally usable image with credit (Wikimedia Commons,
@@ -59,7 +59,7 @@ Keep a small rotation log (e.g. `pipeline-log.md`, git-committed) recording
   Scripture-grounded perspective (cite the reference).
 - **Commentary.** Only include a Daniel Whyte III `commentary` when he has
   supplied one for that story. **Never invent his commentary.**
-- **Voice.** Theologically biblical conservative; plain, direct, pastoral.
+- **Voice.** Theologically biblical; plain, direct, pastoral.
   No sensationalism, no gossip framing.
 - **Dates.** `published_at` = the run date (ISO). Display is always a fixed
   date — never relative ("x hours ago").

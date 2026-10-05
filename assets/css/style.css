@@ -104,6 +104,8 @@ img { max-width: 100%; height: auto; display: block; }
 .badge.culture-family { background: var(--badge-culture); }
 .badge.theology { background: var(--badge-theology); }
 .badge.missions { background: var(--badge-missions); }
+.badge.breaking { background: #c0392b; margin-right: 6px; animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.55; } }
 
 .meta {
   font-family: "Source Sans 3", Arial, sans-serif; font-size: 13.5px; color: var(--muted);
