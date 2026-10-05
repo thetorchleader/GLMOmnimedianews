@@ -18,7 +18,7 @@ from datetime import datetime
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Update this to the real Vercel URL after the first deploy (used in sitemap.xml).
-SITE_URL = "https://glmomnimedianews.vercel.app"
+SITE_URL = "https://thetorchleader.github.io/GLMOmnimedianews"
 SITE_NAME = "GLM Omnimedia News"
 TAGLINE = "Biblical News for the Global Church"
 
