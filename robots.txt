@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://glmomnimedianews.vercel.app/sitemap.xml
+Sitemap: https://thetorchleader.github.io/GLMOmnimedianews/sitemap.xml
