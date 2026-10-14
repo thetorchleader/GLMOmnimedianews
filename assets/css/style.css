@@ -56,6 +56,8 @@ img { max-width: 100%; height: auto; display: block; }
   display: inline-flex; align-items: center; gap: 14px; text-decoration: none; color: var(--navy);
 }
 .masthead .brand-logo { width: 72px; height: 72px; flex: none; border-radius: 8px; }
+/* Legacy: pages not yet rebuilt still carry the old flame mark. */
+.masthead .flame { width: 46px; height: 46px; flex: none; }
 .masthead h1 {
   font-family: "Playfair Display", Georgia, serif;
   font-weight: 800; font-size: clamp(30px, 5vw, 52px);
