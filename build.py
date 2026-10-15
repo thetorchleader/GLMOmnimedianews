@@ -32,6 +32,17 @@ NAV_SECTIONS = [
     "Missions",
 ]
 
+# The ministry's own logo: flaming torch over the open Bible (42 years).
+# Served from the BCNN1 media library (absolute https URL; binary files
+# cannot be pushed through the GitHub tools, so the file itself is not
+# stored in this repo).
+LOGO_URL = "https://blackchristiannews.com/wp-content/uploads/2026/09/torchlogo.webp"
+LOGO_ALT = "Flaming torch over the open Bible — the Gospel Light logo"
+LOGO_IMG = (
+    f'<img class="brand-logo" src="{LOGO_URL}" alt="{LOGO_ALT}"'
+    ' width="72" height="72" loading="eager">'
+)
+
 FLAME_SVG = (
     '<svg class="flame" viewBox="0 0 24 24" aria-hidden="true">'
     '<path fill="#c19a3f" d="M12.6 2.2c.9 3.9-4.1 5-4.1 9.2a4.9 4.9 0 0 0 9.8 0c0-1.9-.9-2.9-.9-2.9s1.9 1.1 1.9 3.9a7.3 7.3 0 1 1-14.6 0C4.7 7.6 9.9 6.2 12.6 2.2z"/>'
@@ -39,10 +50,16 @@ FLAME_SVG = (
     "</svg>"
 )
 
-FAVICON = (
+FAVICON = LOGO_URL
+
+# Placeholder shown when a story has no image (keeps cards intact).
+PLACEHOLDER_IMG = (
     "data:image/svg+xml,"
-    "%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E"
+    "%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E"
+    "%3Crect width='800' height='450' fill='%23141824'/%3E"
+    "%3Cg transform='translate(368 193) scale(2.667)'%3E"
     "%3Cpath fill='%23c19a3f' d='M12.6 2.2c.9 3.9-4.1 5-4.1 9.2a4.9 4.9 0 0 0 9.8 0c0-1.9-.9-2.9-.9-2.9s1.9 1.1 1.9 3.9a7.3 7.3 0 1 1-14.6 0C4.7 7.6 9.9 6.2 12.6 2.2z'/%3E"
+    "%3C/g%3E"
     "%3C/svg%3E"
 )
 
@@ -59,8 +76,9 @@ def esc(text):
 
 
 def img_url(image, prefix=""):
-    """Return the image URL, prefixing only relative paths."""
-    image = image or ""
+    """Return the image URL, prefixing only relative paths. Empty -> placeholder."""
+    if not image:
+        return PLACEHOLDER_IMG
     if image.startswith(("http://", "https://", "data:")):
         return image
     return prefix + image
@@ -75,8 +93,30 @@ def fmt_date(iso):
 
 
 def load_stories():
-    with open(os.path.join(ROOT, "stories.json"), encoding="utf-8") as f:
-        stories = json.load(f)
+    stories = []
+    seen = set()
+    # Legacy monolithic file (frozen — new stories go to data/*.json).
+    legacy = os.path.join(ROOT, "stories.json")
+    if os.path.exists(legacy):
+        with open(legacy, encoding="utf-8") as f:
+            for s in json.load(f):
+                if s["slug"] not in seen:
+                    seen.add(s["slug"])
+                    stories.append(s)
+    # Per-story data files (new format — one small file per story).
+    data_dir = os.path.join(ROOT, "data")
+    if os.path.isdir(data_dir):
+        for name in sorted(os.listdir(data_dir)):
+            if name.endswith(".json"):
+                with open(os.path.join(data_dir, name), encoding="utf-8") as f:
+                    s = json.load(f)
+                if s["slug"] not in seen:
+                    seen.add(s["slug"])
+                    stories.append(s)
+                else:
+                    # data/ version wins over the legacy copy.
+                    stories = [x for x in stories if x["slug"] != s["slug"]]
+                    stories.append(s)
     stories.sort(key=lambda s: s["published_at"], reverse=True)
     return stories
 
@@ -113,7 +153,7 @@ def utility_bar():
 def masthead(prefix):
     return f"""<header class="masthead">
   <a class="brandmark" href="{prefix}index.html" aria-label="{esc(SITE_NAME)} home">
-    {FLAME_SVG}
+    {LOGO_IMG}
     <h1>{esc(SITE_NAME)}</h1>
   </a>
   <p class="tagline">{esc(TAGLINE)}</p>
@@ -176,12 +216,31 @@ def story_url(story, prefix=""):
     return f"{prefix}stories/{story['slug']}.html"
 
 
+def has_real_image(story):
+    """True when the story has a genuine image (not the shared placeholder).
+
+    One legacy entry in the frozen stories.json carries the placeholder SVG
+    inline as its image value; treat that as "no image" too.
+    """
+    img = story.get("image") or ""
+    return bool(img) and not img.startswith("data:image/svg+xml,")
+
+
 def card(story, prefix=""):
     breaking = '<span class="badge breaking">Breaking</span>' if story.get("breaking") else ""
+    url = story_url(story, prefix)
+    if has_real_image(story):
+        thumb = (
+            f'<a class="thumb" href="{url}" aria-label="{esc(story["title"])}">'
+            f'<img src="{esc(img_url(story["image"], prefix))}" alt="{esc(story["title"])}" loading="lazy">'
+            f"</a>"
+        )
+    else:
+        # No image: shared CSS placeholder (style.css .thumb-empty) instead of
+        # a repeated inline-SVG <img> — keeps index.html small enough to push.
+        thumb = f'<a class="thumb thumb-empty" href="{url}" aria-label="{esc(story["title"])}"></a>'
     return f"""<article class="card">
-  <a class="thumb" href="{story_url(story, prefix)}" aria-label="{esc(story['title'])}">
-    <img src="{esc(img_url(story['image'], prefix))}" alt="{esc(story['title'])}" loading="lazy">
-  </a>
+  {thumb}
   <div class="card-body">
     {breaking}{badge(story['category'])}
     <h3><a href="{story_url(story, prefix)}">{esc(story['title'])}</a></h3>
@@ -224,11 +283,20 @@ def build_index(stories):
     # Breaking stories pin to the top, then newest first.
     stories = sorted(stories, key=lambda s: (bool(s.get("breaking")), s["published_at"]), reverse=True)
     hero = stories[0]
+    if has_real_image(hero):
+        hero_thumb = (
+            f'<a class="hero-img" href="{story_url(hero)}" aria-label="{esc(hero["title"])}">'
+            f'<img src="{esc(img_url(hero["image"]))}" alt="{esc(hero["title"])}">'
+            f"</a>"
+        )
+    else:
+        hero_thumb = (
+            f'<a class="hero-img hero-img-empty" href="{story_url(hero)}" '
+            f'aria-label="{esc(hero["title"])}"></a>'
+        )
     hero_html = f"""<section class="hero" aria-label="Featured story">
   <div class="hero-card">
-    <a class="hero-img" href="{story_url(hero)}" aria-label="{esc(hero['title'])}">
-      <img src="{esc(hero['image'])}" alt="{esc(hero['title'])}">
-    </a>
+    {hero_thumb}
     <div class="hero-text">
       {badge(hero['category'])}
       <h2><a href="{story_url(hero)}">{esc(hero['title'])}</a></h2>
