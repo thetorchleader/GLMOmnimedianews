@@ -43,6 +43,19 @@ LOGO_IMG = (
     ' width="72" height="72" loading="eager">'
 )
 
+def brand_lockup(kind="story"):
+    """Name-and-logo block shown wherever a story has no photo: the ministry's
+    torch-over-Bible logo beside the site name. Pastor Whyte's direction
+    (2026-11-04) — replaces the old plain-flame placeholder emblem, which he
+    first asked to have removed on 2026-10-13."""
+    return (
+        f'<span class="brand-lockup brand-lockup-{kind}">'
+        f'<img src="{LOGO_URL}" alt="{LOGO_ALT}">'
+        f'<span class="brand-lockup-name">{SITE_NAME}</span>'
+        "</span>"
+    )
+
+
 FLAME_SVG = (
     '<svg class="flame" viewBox="0 0 24 24" aria-hidden="true">'
     '<path fill="#c19a3f" d="M12.6 2.2c.9 3.9-4.1 5-4.1 9.2a4.9 4.9 0 0 0 9.8 0c0-1.9-.9-2.9-.9-2.9s1.9 1.1 1.9 3.9a7.3 7.3 0 1 1-14.6 0C4.7 7.6 9.9 6.2 12.6 2.2z"/>'
@@ -57,9 +70,6 @@ PLACEHOLDER_IMG = (
     "data:image/svg+xml,"
     "%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E"
     "%3Crect width='800' height='450' fill='%23141824'/%3E"
-    "%3Cg transform='translate(368 193) scale(2.667)'%3E"
-    "%3Cpath fill='%23c19a3f' d='M12.6 2.2c.9 3.9-4.1 5-4.1 9.2a4.9 4.9 0 0 0 9.8 0c0-1.9-.9-2.9-.9-2.9s1.9 1.1 1.9 3.9a7.3 7.3 0 1 1-14.6 0C4.7 7.6 9.9 6.2 12.6 2.2z'/%3E"
-    "%3C/g%3E"
     "%3C/svg%3E"
 )
 
@@ -231,14 +241,14 @@ def card(story, prefix=""):
     url = story_url(story, prefix)
     if has_real_image(story):
         thumb = (
-            f'<a class="thumb" href="{url}" aria-label="{esc(story["title"])}">'
+            f'<a class="thumb" href="{url}">'
             f'<img src="{esc(img_url(story["image"], prefix))}" alt="{esc(story["title"])}" loading="lazy">'
             f"</a>"
         )
     else:
         # No image: shared CSS placeholder (style.css .thumb-empty) instead of
         # a repeated inline-SVG <img> — keeps index.html small enough to push.
-        thumb = f'<a class="thumb thumb-empty" href="{url}" aria-label="{esc(story["title"])}"></a>'
+        thumb = f'<a class="thumb thumb-empty" href="{url}">{brand_lockup("thumb")}</a>'
     return f"""<article class="card">
   {thumb}
   <div class="card-body">
@@ -292,7 +302,7 @@ def build_index(stories):
     else:
         hero_thumb = (
             f'<a class="hero-img hero-img-empty" href="{story_url(hero)}" '
-            f'aria-label="{esc(hero["title"])}"></a>'
+            f'aria-label="{esc(hero["title"])}">{brand_lockup("hero")}</a>'
         )
     hero_html = f"""<section class="hero" aria-label="Featured story">
   <div class="hero-card">
@@ -383,6 +393,16 @@ def build_story_page(story, stories):
     if newer:
         nav_links.insert(0, f'<a class="btn" href="{newer["slug"]}.html">&larr; Newer Story</a>')
 
+    if has_real_image(story):
+        figure_html = f"""<figure class="story-figure">
+    <img src="{esc(img_url(story['image'], '../'))}" alt="{esc(story['title'])}">
+    <figcaption>{esc(story['image_credit'])}</figcaption>
+  </figure>"""
+    else:
+        figure_html = f"""<figure class="story-figure">
+    {brand_lockup("story")}
+  </figure>"""
+
     body = (
         head(story["title"], story["summary"], "../")
         + utility_bar()
@@ -400,10 +420,7 @@ def build_story_page(story, stories):
       <span>Source: <a href="{esc(story['source_url'])}" rel="noopener" target="_blank">{esc(story['source_name'])}</a></span>
     </div>
   </header>
-  <figure class="story-figure">
-    <img src="{esc(img_url(story['image'], '../'))}" alt="{esc(story['title'])}">
-    <figcaption>{esc(story['image_credit'])}</figcaption>
-  </figure>
+  {figure_html}
 {commentary_html}  <div class="story-body">
 {story['body_html']}
   </div>
