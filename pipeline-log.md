@@ -407,3 +407,9 @@
 - Rotation index 6 (Religion News Service) hit Cloudflare 403 as the pipeline anticipated; skipped to index 7 (Google News — Christianity).
 - Story: "U.S. Officials Say Violence Against Christians in Nigeria Remains a Key Concern" (slug us-officials-violence-against-christians-nigeria-key-concern), World. Rewrote Reuters (Nov 13, 2026) in own words; Garcia "the violence has not stopped" quote credited; Nigeria's terrorism-not-persecution position and Rep. Moore's CPC remarks included; no commentary invented; takeaway Hebrews 13:3 / Matthew 5:9.
 - Image: National Church of Nigeria (National Christian Centre), Abuja (Kritzolina / Wikimedia Commons / CC BY-SA 4.0) — downloaded and viewed before use (church building, correct subject).
+
+## 2026-11-13 7:00 PM CT run — Religion News Service (rotation 6 → 7)
+- RNS feed unreachable by curl (000) but readable via browser.open; top item was a Sodalitium abuse-survivors story — skipped as a sensitive allegation item. Picked the next fresh item instead.
+- Story: "Pope Leo XIV Returns to Zaña, Peru, the Farming Town Where His Ministry as Bishop Began" (slug pope-leo-returns-to-zana-peru), World. Rewrote RNS (Nov 13, 2026) in own words; Farfán "cry of the oppressed" quote credited to him, not to the pope; no commentary invented; takeaway Matthew 25:40.
+- Image: Iglesia Matriz (main church) of Zaña (Pato1968 / Wikimedia Commons / CC BY-SA 4.0) — downloaded and viewed before use (historic adobe church ruin, correct subject).
+- NOTE: first push attempt was cut off by a service restart with unknown outcome; verification showed it had NOT landed (no commit, data JSON + story page 404), while index.html/sitemap.xml already on remote (byte-identical) via the 3pm run's later push from the shared workspace. Pushed only the two missing files as the single careful retry.
