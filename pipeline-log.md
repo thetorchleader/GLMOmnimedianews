@@ -386,3 +386,24 @@
 - Push: first attempt interrupted by a service restart (unknown outcome); verified via list_commits that it had NOT landed; one careful retry succeeded. Commit 1d29fea0a191. Verified live on glmomnimedianews.com (200, title + Stephens Valley present) after Pages deploy lag (~3 min 404 first).
 - Rotation advanced to 2 (Protestia next).
 - 2026-11-12 ~7:30 AM CT (Pastor-directed cross-posts from BCNN1; NOT rotation runs, rotation unchanged): "Wikipedia Co-Founder Larry Sanger, Now a Christian, Gives the Church the World's First High-Quality Public-Domain Audio KJV Bible — 'Free, Forever'" (slug wikipedia-co-founder-larry-sanger-free-public-domain-audio-kjv-bible; source Protestia; image = BCNN1 media 8071, Larry Sanger headshot, CC BY-SA 4.0, viewed before use) and "Daniel Whyte III says Setting the Trial Date for Charlie Kirk's Accused Killer, Tyler Robinson, for 2028 is Demonic, Woke Foolishness and Extends the Pain of Persecution" (slug daniel-whyte-iii-tyler-robinson-trial-2028-judge-graf-reconsider; source The Christian Post; his supplied commentary carried verbatim; accused/presumed-innocent framing kept; image = Charlie Kirk photo from BCNN1 media library #5943, viewed before use).
+
+## 2026-11-12 10:00 AM CT run (Protestia, rotation 2 → 3)
+- Story: "Calvary Chapel Costa Mesa Says It Will Begin Ordaining Women as Pastors, Drawing Pushback from the Calvary Chapel Association" (slug calvary-chapel-costa-mesa-ordain-women-pastors). Lead Pastor Char Brodersen (Chuck Smith's grandson) announced Nov 1 the church will ordain women as pastors; CCA Heartland Regional Team responded it is a significant departure from biblical convictions. Both positions reported fairly; no commentary invented; takeaway grounded in 1 Timothy 3:2 / Titus 1:5-9 and 1 Corinthians 14:40.
+- Image: Calvary Chapel Costa Mesa main sanctuary from Fairview Ave (Vercillo / Wikimedia Commons / CC BY-SA 3.0) — downloaded and viewed before use (church building, no people).
+- Push: github push-files (data JSON + story page + sitemap + minified index.html). Commit a8a0091629ac0a34b9c27c891963804ea928ad69.
+- Rotation advanced to 3 (Christianity Today next).
+
+2026-11-12 7:00 PM CT | Christianity Today (#3) | lausanne-covenant-gen-z-next-generation | Missions | pushed commit 487704e361b6952412ac712cc28e54ffc2a8d893 | rotation -> 4 (Charisma News next)
+- Freshest CT items Nov 12; Indian Christian cafés story already published — skipped. Picked Rome Williams' Lausanne Covenant / Gen Z piece.
+- Image: public-domain 1946 photo of young Billy Graham with Charles Templeton and Stratton Shufelt in Stockholm (Wikimedia Commons), downloaded and viewed before use.
+- First push-files attempt interrupted by service restart; verified via list_commits it had NOT landed, one careful retry succeeded.
+
+## 2026-11-13 5:00 AM CT run — Charisma News (rotation 4 → 5)
+- Story: "Colorado Senator's Muslim-Only Internship Posting Raises Questions About Fairness in Public Hiring" (slug colorado-senator-muslim-only-internship-posting), Religious Liberty. Rewrote Charisma News (Nov 12, 2026; originally American Faith) in own words; Title VII / Colorado law context included; no commentary invented; takeaway Acts 10:34-35.
+- Image: Colorado State Senator Iman Jodeh speaking in the Colorado Senate (WhatMyUserName / Wikimedia Commons / CC0) — downloaded and viewed before use (podium, Senate chamber, correct person).
+- Push: first push-files attempt interrupted by a service restart — verified NOT landed (head still 487704e3, new data file 404 on raw); one careful retry succeeded. Commit 515d94fc79c5d21089ec6c94aae8f96431a3b5c8. Verified live on glmomnimedianews.com (200, title + Jodeh photo present). Rotation advanced to 5 (CBN News next).
+
+## 2026-11-13 3:00 PM CT run — Google News (rotation 7 → 8)
+- Rotation index 6 (Religion News Service) hit Cloudflare 403 as the pipeline anticipated; skipped to index 7 (Google News — Christianity).
+- Story: "U.S. Officials Say Violence Against Christians in Nigeria Remains a Key Concern" (slug us-officials-violence-against-christians-nigeria-key-concern), World. Rewrote Reuters (Nov 13, 2026) in own words; Garcia "the violence has not stopped" quote credited; Nigeria's terrorism-not-persecution position and Rep. Moore's CPC remarks included; no commentary invented; takeaway Hebrews 13:3 / Matthew 5:9.
+- Image: National Church of Nigeria (National Christian Centre), Abuja (Kritzolina / Wikimedia Commons / CC BY-SA 4.0) — downloaded and viewed before use (church building, correct subject).
