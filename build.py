@@ -177,6 +177,8 @@ def nav(prefix, current="home"):
         anchor = "latest" if section == "Latest" else slugify(section)
         href = f"{prefix}index.html#{anchor}" if current != "home" else f"#{anchor}"
         items.append(f'<li><a href="{href}">{esc(section)}</a></li>')
+    items.append(f'<li><a href="{prefix}books.html">Books</a></li>')
+    items.append(f'<li><a href="{prefix}newsletter.html">Newsletter</a></li>')
     return "<nav class=\"main-nav\" aria-label=\"Sections\"><ul>\n" + "\n".join(items) + "\n</ul></nav>\n"
 
 
