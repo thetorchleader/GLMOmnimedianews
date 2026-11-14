@@ -413,3 +413,18 @@
 - Story: "Pope Leo XIV Returns to Zaña, Peru, the Farming Town Where His Ministry as Bishop Began" (slug pope-leo-returns-to-zana-peru), World. Rewrote RNS (Nov 13, 2026) in own words; Farfán "cry of the oppressed" quote credited to him, not to the pope; no commentary invented; takeaway Matthew 25:40.
 - Image: Iglesia Matriz (main church) of Zaña (Pato1968 / Wikimedia Commons / CC BY-SA 4.0) — downloaded and viewed before use (historic adobe church ruin, correct subject).
 - NOTE: first push attempt was cut off by a service restart with unknown outcome; verification showed it had NOT landed (no commit, data JSON + story page 404), while index.html/sitemap.xml already on remote (byte-identical) via the 3pm run's later push from the shared workspace. Pushed only the two missing files as the single careful retry.
+- Push: first attempt interrupted by a service restart (unknown outcome); verified via list_commits it had NOT landed; one careful retry succeeded. Commit cef7cd033bf31545f52adb2da91886d366e63eb5. Verified live on glmomnimedianews.com (200, title + Kritzolina photo credit present) after Pages deploy lag.
+- Rotation advanced to 8 (MailOnline via Google News next).
+
+## 2026-11-14 05:00 CT — Google News (religion) [rotation 7]
+- Story: "Pope Leo XIV Returns to Chiclayo: 'All Christians Are Called to Be Missionary Disciples'" (slug pope-leo-xiv-chiclayo-all-christians-missionary-disciples), Missions. Rewrote Catholic World Report / EWTN News (Francis X. Rocca, Nov 13, 2026) in own words; short attributed homily quotes; no commentary invented; takeaway Matthew 28:19.
+- Note: Google News RSS link was invalid on redirect (browser read the article directly on catholicworldreport.com). The Reuters Nigeria story in the same feed was already published (slug us-officials-violence-against-christians-nigeria-key-concern), so it was skipped.
+- Image: Statue of Pope Leo XIV at Pimentel, Chiclayo (H.dav.are / Wikimedia Commons / CC BY-SA 4.0) — downloaded and viewed before use (statue of the pope, correct subject; Mass was at Pampas de Pimentel).
+- Push: first attempt interrupted by a service restart (unknown outcome); verified via list_commits it had NOT landed; one careful retry succeeded. Commit 69ed75ce8a6765092e67ab8b48e9913d9cb0c77d.
+- Rotation advanced to 8 (MailOnline via Google News next).
+
+## 2026-11-14 10:00 AM CT — Iraq cathedral story
+- Rotation was 8 (MailOnline via Google News): both site: queries returned 0 items (feed empty, not an error). Skipped per failure handling; took next source, Christian Post (0).
+- Story: "Iraq Urges Christians Driven Out by ISIS to Return as New Cathedral Opens in Baghdad" (slug iraq-urges-christians-to-return-as-new-cathedral-opens-baghdad), World. Rewrote Christian Post (Anugrah Kumar, Nov 14, 2026) in own words; included PM Al-Zaidi's welcome and MP Kaldo Oghanna's caution (government weak on Iran-backed militias; stop the outflow first); no commentary invented; takeaway Isaiah 61:4 / Hebrews 13:3.
+- Image: St. Joseph's Cathedral, Baghdad, 2016 (Aziz1005 / Wikimedia Commons / CC BY-SA 4.0) — downloaded and viewed before use (domed cathedral with cross, correct subject).
+- Rotation advanced to 1 (ChurchLeaders next).
