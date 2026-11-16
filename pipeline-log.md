@@ -428,3 +428,9 @@
 - Story: "Iraq Urges Christians Driven Out by ISIS to Return as New Cathedral Opens in Baghdad" (slug iraq-urges-christians-to-return-as-new-cathedral-opens-baghdad), World. Rewrote Christian Post (Anugrah Kumar, Nov 14, 2026) in own words; included PM Al-Zaidi's welcome and MP Kaldo Oghanna's caution (government weak on Iran-backed militias; stop the outflow first); no commentary invented; takeaway Isaiah 61:4 / Hebrews 13:3.
 - Image: St. Joseph's Cathedral, Baghdad, 2016 (Aziz1005 / Wikimedia Commons / CC BY-SA 4.0) — downloaded and viewed before use (domed cathedral with cross, correct subject).
 - Rotation advanced to 1 (ChurchLeaders next).
+
+## 2026-11-15 7:00 PM CT — Wes Huff website offline story
+- Rotation was 2 (Protestia). Feed fetched (301 to trailing-slash URL, then 200). Freshest not-yet-published: "Apologist Wes Huff Deletes Website Amid Plagiarism Accusations" (Nov 13). Others in feed already published (Jesus Calling PCA, Steve Camp, Garlick 159 years, Lifeway Bible quiz, Steve Lawson restore, Tom Keesee).
+- Story: "Wes Huff Takes Website Offline as Plagiarism Accusations Widen" (slug wes-huff-takes-website-offline-plagiarism-accusations), Church & Ministry. Rewrote Protestia in own words; distinguished Huff's admitted citation problems in 2016-2019 Academia.edu papers from the still-alleged infographic copying; noted the benefit-of-the-doubt (watermark does not prove he made the graphics) and his daughter's medical emergency; no commentary invented; takeaway 2 Timothy 2:15.
+- Image: Wes Huff speaking at 2025 Thinking Matters Apologetics Conference (VistaSunset / Wikimedia Commons / CC BY-SA 4.0) — downloaded and viewed before use; correct subject. Note: browser agent first reported a wrong direct URL (5/51, 404s); verified correct path is e/e3.
+- Rotation advanced to 3 (Christianity Today next).
