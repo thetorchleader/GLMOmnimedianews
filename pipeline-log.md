@@ -505,3 +505,14 @@
 - NEXT RUN NOTE: THREE stories are built locally but NOT on GitHub — Oklahoma prison revival (data/oklahoma-prison-revival-200-born-again.json + stories page), Infinite Hope Seattle (data/infinite-hope-jesus-university-washington-seattle.json + stories page), Sudan cathedral (data/hidden-cathedral-floor-old-dongola-sudan.json + stories page). Any later push that rebuilds index.html MUST include all six files plus index.html and sitemap.xml, or the front page will link to story pages that do not exist remotely. Paths file saved at hidden_files/push-paths-7pm-20261117.txt (11 files incl. pipeline-log.md and hidden_files/rotation.txt).
 - Rotation advanced 5 → 6 locally (next source: Religion News Service). Note: remote rotation.txt still reads 5 because the push did not land; local file is authoritative for the next run.
 - Rotation advanced 5 → 6 (next source: Religion News Service).
+
+## 2026-11-17 7:00 PM CT run — RECOVERY (main session, ~8:28 PM CT)
+- Pastor Whyte was present and tapped Allow on both push cards. Batch 1 (6 story files) landed as commit bb744c48; batch 2 (index.html + sitemap.xml + robots.txt + pipeline-log.md + rotation.txt) landed as commit d91f2d64. HEAD now d91f2d64.
+- Verified live via raw.githubusercontent.com: all three story pages read back in full (Oklahoma prison revival, Seattle hope, Sudan cathedral). GLM now at 209 stories.
+- Note: the pushed pipeline-log.md still carries the 7 PM run's "PUSH FAILED" entry; this recovery note lives in the local log until the next push carries it.
+
+## 2026-11-18 5:00 AM CT run
+- Source: Religion News Service (rotation 6; RNS feed 403 to curl, read via browser fetch as documented).
+- Story: cair-sues-abbott-texas-eid-swim-event — "Texas Woman Sues Governor Abbott Over Canceled Eid Swim Event" (Religious Liberty). CAIR + Aminah Knight sue Gov. Abbott, Grand Prairie, and Epic Waters over the canceled May 2026 Eid swim event; allegations distinguished from findings; Abbott's office did not respond, Grand Prairie had no statement.
+- Image: Texas State Capitol, Daderot / Wikimedia Commons / CC0 (viewed before publishing).
+- GLM now at 211 stories. Rotation advanced to 7 (Google News).
