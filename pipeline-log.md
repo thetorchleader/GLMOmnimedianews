@@ -516,3 +516,15 @@
 - Story: cair-sues-abbott-texas-eid-swim-event — "Texas Woman Sues Governor Abbott Over Canceled Eid Swim Event" (Religious Liberty). CAIR + Aminah Knight sue Gov. Abbott, Grand Prairie, and Epic Waters over the canceled May 2026 Eid swim event; allegations distinguished from findings; Abbott's office did not respond, Grand Prairie had no statement.
 - Image: Texas State Capitol, Daderot / Wikimedia Commons / CC0 (viewed before publishing).
 - GLM now at 211 stories. Rotation advanced to 7 (Google News).
+
+## 2026-11-18 10:00 AM CT run
+- Source: Google News (religion) (rotation 7).
+- Story: pew-muslims-outnumber-christians-2035 — "Muslims Projected to Outnumber Christians by 2035 — Yet Christianity Keeps Growing" (World). Pew Research Center projections (2020-2070): Muslims surpass Christians by 2035; by 2070, 3.6B+ Muslims vs just under 3B Christians; both faiths still growing. AP News article was Cloudflare-blocked in the browser and via curl (403); read the Pew Research Center short read instead (primary source, same study).
+- Image: Pew Research Center chart (outlet-provided, viewed before publishing). Wikimedia Commons map download was rate-limited (429) all morning, so the Commons map was not used.
+- Build: OK (212 stories). PUSH FAILED: three github push-files attempts (full 4-file set, then small 2-file set) were all cut off by service restarts; commit list verified after each — latest commit still 164883ae (5am cair story). Story files are built locally and will ride the next successful push (3pm run carries it). Rotation advanced to 8 (MailOnline).
+
+## 2026-11-19 10:00 AM CT run
+- Source: Christianity Today (rotation 3). RSS fetched OK via curl.
+- Story: pew-christians-minority-north-america-2070-africa-doubles — "Pew: By 2070, Most of the World's Christians Will Live in Sub-Saharan Africa" (World). Pew Research Center "The Future of World Religions": Christians 46% of North America by 2070; sub-Saharan Africa Christians more than double to 1.6B (54% of all Christians); DRC passes the US as the country with the most Christians. Drivers: fertility, migration, religious switching; quotes from Conrad Hackett and Alan Cooperman with credit. Read in full via browser.open.
+- Image: Sunday worship service in a Lingwala church, Kinshasa, DRC — KAPUKU / Wikimedia Commons / CC BY-SA 4.0 (downloaded and viewed before publishing; banner in the photo reads "Jésus Christ est le même hier, aujourd'hui et pour toujours").
+- Build: python3 build.py OK; 216 stories. Rotation advanced to 4 (Charisma News).
